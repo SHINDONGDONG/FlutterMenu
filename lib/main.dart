@@ -229,8 +229,7 @@
 // }
 
 import 'package:flutter/material.dart';
-
-
+import 'package:fluttertoast/fluttertoast.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -267,22 +266,25 @@ class MyPage extends StatelessWidget {
           )
         ],
       ),
-      body:Builder(builder: (BuildContext ctx) {
-        return  Center(
-        child: FlatButton(
-          child: Text(
-            'Show me',
-            style: TextStyle(color: Colors.white),
-          ),
-          color: Colors.red,
-          onPressed: () {
-            Scaffold.of(ctx).showSnackBar(SnackBar(
-              content: Text('Hello'),
-            ));
-          },
-        ),
-      );
-      },),
+      body: Toast(),
+      // MySnackBar(),
+
+      // Builder(builder: (BuildContext ctx) {
+      //   return  Center(
+      //   child: FlatButton(
+      //     child: Text(
+      //       'Show me',
+      //       style: TextStyle(color: Colors.white),
+      //     ),
+      //     color: Colors.red,
+      //     onPressed: () {
+      //       Scaffold.of(ctx).showSnackBar(SnackBar(
+      //         content: Text('Hello'),
+      //       ));
+      //     },
+      //   ),
+      // );
+      // },),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -348,3 +350,54 @@ class MyPage extends StatelessWidget {
     );
   }
 }
+
+class MySnackBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: RaisedButton(
+          child: Text(
+            'Show me the Money',
+            style: TextStyle(color: Colors.white),
+          ),
+          color: Colors.red,
+          onPressed: () {
+            Scaffold.of(context).showSnackBar(SnackBar(
+              content: Text(
+                'Show me the Hello',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white),
+              ),
+              backgroundColor: Colors.teal,
+              duration: Duration(microseconds: 1000),
+            ));
+          }),
+    );
+  }
+}
+
+class Toast extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: FlatButton(
+        onPressed:(){
+          flutterToast();
+        },
+        child: Text('Toast'),
+        color: Colors.blue,
+        ),
+    );
+  }
+}
+
+void flutterToast(){
+    Fluttertoast.showToast( msg: 'Flutter Toast',
+    gravity: ToastGravity.BOTTOM,
+    backgroundColor: Colors.redAccent,
+    fontSize: 20.0,
+    textColor: Colors.white,
+    toastLength: Toast.LENGTH_SHORT
+    );
+  }
+  
