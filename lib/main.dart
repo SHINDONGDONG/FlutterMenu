@@ -230,6 +230,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -266,7 +267,7 @@ class MyPage extends StatelessWidget {
           )
         ],
       ),
-      body: Toast(),
+      body:Toast1(),
       // MySnackBar(),
 
       // Builder(builder: (BuildContext ctx) {
@@ -376,28 +377,28 @@ class MySnackBar extends StatelessWidget {
   }
 }
 
-class Toast extends StatelessWidget {
+class Toast1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: FlatButton(
-        onPressed:(){
+        onPressed: () {
           flutterToast();
         },
         child: Text('Toast'),
         color: Colors.blue,
-        ),
+      ),
     );
   }
 }
 
-void flutterToast(){
-    Fluttertoast.showToast( msg: 'Flutter Toast',
+void flutterToast() {
+  Fluttertoast.showToast(
+    msg: 'flutter Toast',
     gravity: ToastGravity.BOTTOM,
     backgroundColor: Colors.redAccent,
     fontSize: 20.0,
     textColor: Colors.white,
     toastLength: Toast.LENGTH_SHORT
-    );
-  }
-  
+  );
+}
